@@ -40,6 +40,16 @@ def main():
     print("Classification Report, extraTree (w/o SMOTE):\n", report_et)
     print("Confusion Matrix, extraTree (w/o SMOTE):\n", cm_et)
     
+    feature_importances = clf_et.feature_importances_
+    feature_importance_df = pd.DataFrame({"Features": X.columns, "Importance": feature_importances})
+    feature_importance_df = pd.DataFrame({
+        'Feature': X.columns,
+        'Importance': feature_importances
+    })
+
+
+    feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False)
+    print("Feature Importance:\n", feature_importance_df.head())
     
     
     
