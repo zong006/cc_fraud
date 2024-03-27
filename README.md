@@ -1,4 +1,6 @@
-A simple machine learning project on a classification task with a highly imbalanced target class. 
+#### Summary
+
+An Extra Trees classification model using ScikitLearn and resampling methods for the critical task of credit card fraud detection, showcasing outstanding performance with a recall score surpassing 0.86 across all classes.
 
 
 #### DataSet 
@@ -29,14 +31,16 @@ https://www.kaggle.com/mlg-ulb/creditcardfraud
 - This is a classification problem with an imbalanced binary target class, and the Extra-Trees classifier is used here.
 We can also attempt to frame this as an anomaly detection problem, and the Isolation-Forest algorithm is used.
 
-- Nonetheless, due to the severe underrepresentation of the minority class (<1% of the dataset), stratification on the target class is used when splitting the data into training and testing sets. Synthetic data generation using SMOTE is also attempted, on both algorithms mentioned above. Since this is a highly imbalanced dataset, we can look at the f1 score where the evaluations are as follows:
+- Nonetheless, due to the severe underrepresentation of the minority class (<1% of the dataset), stratification on the target class is used when splitting the data into training and testing sets. Synthetic data generation using SMOTE is also attempted, on both algorithms mentioned above. Since this is a highly imbalanced dataset, and consequences of false negatives are much higher, we can look at the recall score where the evaluations are as follows:
 
 1. isolation-forest, w/ SMOTE and w/o SMOTE:
-    Does not perform well at all, with an f1 score of almost 0 for both majority and minority classes.
+    A recall score of 0 for the majority class with and without resampling, while for the minority positive class, 0.82 with resampling and 0.69 without.
 2. extra-trees, w/ SMOTE:
-    Performs relatively well, with an f1 score of 1.0 and 0.88 for the majority and minority class, respectively.
+    Performs well, with a recall score of 1.0 and 0.86 for the majority and minority class, respectively.
 3. extra-trees, w/0 SMOTE:
-    slightly better performance than using SMOTE, with an f1 score of 1.0 and 0.89 for the majority and minority class, respectively.
+    Slightly worse performance than using SMOTE, with a recall score of 1.0 and 0.83 for the majority and minority class, respectively.
     
+The extra-trees model with resampling has the highest recall scores amongst the models used.
+
 As expected from EDA, neither "Time" nor "Amount" is the most important feature in the extra-trees algorithm. Nonetheless, the interpretability of the other more important features (those from V1 to V28) is unclear, since these are already preprocessed, so we shall not comment further on that. 
 
